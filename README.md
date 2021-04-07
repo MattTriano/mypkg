@@ -45,18 +45,22 @@ def ensure_dir_exists(dir_path: str) -> None:
 ```
 or if you've pushed it to GitHub or GitLab and already set up an access token for your machine, you can install the current version of the main branch via the command below.
 ```bash
-(geo_env) matt@matt:~<any location>$ python -m pip install -e git+ssh://git@github.com/MattTriano/mypkg.git#egg=mypkg
+(geo_env) matt@matt:~<any location>$ python -m pip install -e \
+	git+ssh://git@github.com/MattTriano/mypkg.git#egg=mypkg
 ```
 Or install a specific branch (eg `hotfix1`) or commit via
 ```bash
-(geo_env) matt@matt:~<any location>$ python -m pip install -e git+ssh://git@github.com/MattTriano/mypkg.git@hotfix1#egg=mypkg
-(geo_env) matt@matt:~<any location>$ python -m pip install -e git+ssh://git@github.com/MattTriano/mypkg.git@8740a0cfd7a57d70ae95f79e10160253bcf68d8c#egg=mypkg
+(geo_env) matt@matt:~<any location>$ python -m pip install -e \
+	git+ssh://git@github.com/MattTriano/mypkg.git@hotfix1#egg=mypkg
+(geo_env) matt@matt:~<any location>$ python -m pip install -e \
+	git+ssh://git@github.com/MattTriano/mypkg.git@8740a0cfd7a57d70ae95f79e10160253bcf68d8c#egg=mypkg
 ```
 	* Note: While it's possible to simply install things via `(geo_env) matt@matt:~/projects/mypkg$ pip install -e .`, it's a better practice to include `python -m`. In systems where there are multiple installed versions of python (and potentially multiple installs of `pip`) there can be ambiguity about which version of `pip` is used, and this can cause a package to get installed into the `site-packages` directory for a different python version (which you would discover when you call `import mypkg` and it returns `ModuleNotFoundError`). Including `python -m` eliminates this issue.
 	* When you're done developing the package, you can just reinstall the package via any of the above methods, just without the `-e` flag.
 6. If the package is going to remain private, you can just create/update the README file in your package's repo and in the **Install Instructions**, remove the `-e` flag from the install command, and grant access permissions to others who you want to use the package.
 ```bash
-(geo_env) matt@matt:~<any location>$ python -m pip install git+ssh://git@github.com/MattTriano/mypkg.git#egg=mypkg
+(geo_env) matt@matt:~<any location>$ python -m pip install \
+	git+ssh://git@github.com/MattTriano/mypkg.git#egg=mypkg
 ```
 
 
